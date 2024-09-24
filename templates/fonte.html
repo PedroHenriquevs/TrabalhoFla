@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Produtos {% block titulo %} {% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for ('static', filename = '/css/estilo.css' )}}">
+</head>
+
+<body class="
+    {% if request.path == '/produto/cadastrar' %}
+        cadastrar
+    {% elif request.path == '/produto/listar_produtos' %}
+        listar-Produtos
+    {% elif request.path.startswith('/produto/editar/') %}
+        editar
+    {% endif %}
+">
+  {% if request.path == '/' %}
+  <img class="fundo" src="https://content.paodeacucar.com/wp-content/uploads/2019/06/8-dicas-%C3%BAteis-2.jpg">
+  {% endif %}
+
+  <ul>
+    <div class="opcoes">
+      <li><a href="/">Home</a></li>
+      <li><a href="{{ url_for('produto.cadastrar_produto') }}">Cadastrar</a></li>
+      <li><a href="{{ url_for('produto.listagem_produtos') }}">Listar</a></li>
+    </div>
+  </ul>
+  {% block conteudo %}
+
+  {% endblock %}
+
+   
+</body>
+
+</html>

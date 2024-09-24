@@ -1,0 +1,28 @@
+{% extends "fonte.html" %}
+
+{% block titulo %}
+- Editar
+{% endblock %}
+
+{% block conteudo %}
+<div class="telaCad">
+    <h1 class="titleareaCad">Editar Produto</h1>
+    <div class="areaCad">
+        <form action="/produto/editar_enviar" method="post">
+            <div class="barra1">
+                <p><input type="hidden" name="id_produto" class="blockCad" value="{{dados_produto['id']}}"></p>
+                <p>Nome: <input type="text" name="nome" class="blockCad" value="{{dados_produto['nome']}}" /></p>
+                <p>Categoria: <input type="text" name="categoria" class="blockCad" value="{{dados_produto['categoria']}}" /></p>
+            </div>
+            <div class="barra1">
+                <p>Quantidade: <input type="number" name="quantidade" class="blockCad" value="{{dados_produto['quantidade']}}"></p>
+                <p>Preço: <input type="number" step="0.01" name="preco" class="blockCad" value="{{dados_produto['preco']}}"></p>
+            </div>
+            <p class="buttonCad"><button type="submit">Salvar</button></p>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

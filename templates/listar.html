@@ -1,0 +1,62 @@
+{% extends "fonte.html" %}
+
+{% block conteudo %}
+<div class="listaCad">
+    <h1 class="titleCad">Produtos Cadastrados</h1>
+    <div class="tableCad">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nome</td>
+                    <td>Categoria</td>
+                    <td>Quantidade</td>
+                    <td>Preço</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lista %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.categoria}}</td>
+                    <td>{{item.quantidade}}</td>
+                    <td>{{item.preco}}</td>
+                    <td><a class="editar" href="/produto/editar_produto/{{item.id}}">Editar</a></td>
+                    <td><a href="/produto/excluir/{{item.id}} ">Excluir</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-messages">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-messages">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+
+
+{% endblock %}
